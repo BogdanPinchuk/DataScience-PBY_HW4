@@ -109,3 +109,26 @@ class TestCalcCosSimilarity(TestCase):
 
         expected = 'Vectors have different dimensions!'
         self.assertEqual(expected, str(context.exception))
+
+
+class TestCompareValues(TestCase):
+    def test_compare_values_lt(self):
+        value1 = 1
+        value2 = 2
+        actual = compare_values(value1, value2)
+        expected = '<'
+        self.assertEqual(expected, actual)
+
+    def test_compare_values_gt(self):
+        value1 = 2
+        value2 = 1
+        actual = compare_values(value1, value2)
+        expected = '>'
+        self.assertEqual(expected, actual)
+
+    def test_compare_values_eq(self):
+        value1 = 1
+        value2 = 1
+        actual = compare_values(value1, value2)
+        expected = '=='
+        self.assertEqual(expected, actual)

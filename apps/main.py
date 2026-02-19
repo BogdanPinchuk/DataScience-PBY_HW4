@@ -60,3 +60,18 @@ def calc_cosine_similarity(v1, v2) -> tuple[float, float]:
         alpha_rad = np.arccos(cos_alpha)
         alpha_deg = np.degrees(alpha_rad)
     return cos_alpha, alpha_deg
+
+
+def compare_values(val1, val2) -> str:
+    """
+    Comparing 2 values
+    :param val1: value 1
+    :param val2: value 2
+    :return: sign "<", or ">", or "=="
+    """
+    if val1 == val2:
+        return "=="
+    elif val1 > val2:
+        return ">"
+    else:
+        return "<"
