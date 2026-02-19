@@ -1,3 +1,6 @@
+import numpy as np
+
+
 def form_report_data(key: str,
                      value: str,
                      general_data: tuple[int, int, list[tuple[str, str]]]) -> \
@@ -36,3 +39,24 @@ def print_line_splitter(general_data: tuple[int, int]) -> None:
     max_len_rt = general_data[1]
     print("-" * (max_len_lf + max_len_rt + 5))
 
+
+def calc_cosine_similarity(v1, v2) -> tuple[float, float]:
+    """
+    Calculate the cosine similarity between two vectors
+    :param v1: vector 1
+    :param v2: vector 2
+    :return: (cos(alpha), alpha_deg)
+    """
+    if min(len(v1), len(v2)) == 0:
+        raise ValueError("At least one vector has zero dimension!")
+    elif len(v1) != len(v2):
+        raise ValueError("Vectors have different dimensions!")
+    else:
+        scalar_prod = v1 @ v2
+        norm_v1 = np.linalg.norm(v1)
+        norm_v2 = np.linalg.norm(v2)
+        norm_v1_prod_norm_v2 = norm_v1 * norm_v2
+        cos_alpha = scalar_prod / norm_v1_prod_norm_v2
+        alpha_rad = np.arccos(cos_alpha)
+        alpha_deg = np.degrees(alpha_rad)
+    return cos_alpha, alpha_deg
