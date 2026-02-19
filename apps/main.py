@@ -1,0 +1,38 @@
+def form_report_data(key: str,
+                     value: str,
+                     general_data: tuple[int, int, list[tuple[str, str]]]) -> \
+        tuple[int, int, list[tuple[str, str]]]:
+    """
+    Form the report data
+    :param key: Attribute
+    :param value: Result
+    :param general_data: General data (max_len_lf, max_len_rt, data_list(key, value))
+    """
+    max_len_lf = general_data[0]
+    max_len_rt = general_data[1]
+    data_list = general_data[2]
+    max_len_lf = max(max_len_lf, len(key))
+    max_len_rt = max(max_len_rt, len(value))
+    data_list.append((key, value))
+    return max_len_lf, max_len_rt, data_list
+
+
+def print_report_string(row: tuple[str, str], general_data: tuple[int, int]) -> None:
+    """
+    Print the report string
+    :param row: tuple of data
+    :param general_data: General data (max_len_lf, max_len_rt)
+    """
+    max_len_lf = general_data[0]
+    max_len_rt = general_data[1]
+    print(f" {f"{row[0]}":<{max_len_lf}} | {f"{row[1]}":<{max_len_rt}}")
+
+
+def print_line_splitter(general_data: tuple[int, int]) -> None:
+    """
+    Print line splitter
+    """
+    max_len_lf = general_data[0]
+    max_len_rt = general_data[1]
+    print("-" * (max_len_lf + max_len_rt + 5))
+
