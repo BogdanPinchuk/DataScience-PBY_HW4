@@ -132,3 +132,13 @@ class TestCompareValues(TestCase):
         actual = compare_values(value1, value2)
         expected = '=='
         self.assertEqual(expected, actual)
+
+
+class TestCalcVecProjAndResidue(TestCase):
+    def test_calc_vec_projection_and_residue(self):
+        x = np.array([3, 4])
+        v = np.array([1, 1])
+        actual_proj, actual_r = calc_vec_projection_and_residue(x, v)
+        expected_proj, expected_r = np.array([3.5, 3.5]), np.array([-0.5, 0.5])
+        self.assertTrue(np.allclose(expected_proj, actual_proj))
+        self.assertTrue(np.allclose(expected_r, actual_r))
