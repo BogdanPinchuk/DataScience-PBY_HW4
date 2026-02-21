@@ -75,3 +75,13 @@ def compare_values(val1, val2) -> str:
         return ">"
     else:
         return "<"
+
+
+def condition_check(val1: float, val2: float) -> str:
+    """
+    Checking the condition between 2 values
+    :param val1: value 1
+    :param val2: value 2
+    :return: sign "==" or "!="
+    """
+    return "==" if val1 == val2 else "!="
