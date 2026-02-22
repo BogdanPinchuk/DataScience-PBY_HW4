@@ -53,6 +53,18 @@ class TestPrintLineSplitter(TestCase):
         expected = '-' * sum(general_data, 5)
         self.assertEqual(expected, actual)
 
+    def test_print_line_splitter_point(self):
+        general_data = (10, 10)
+
+        # intercept data output
+        buffer = io.StringIO()
+        with redirect_stdout(buffer):
+            print_line_splitter(general_data, ".")
+
+        actual = buffer.getvalue().strip()
+        expected = '.' * sum(general_data, 5)
+        self.assertEqual(expected, actual)
+
 
 class TestCalcCosSimilarity(TestCase):
     def test_calc_cosine_similarity(self):

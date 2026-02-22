@@ -31,13 +31,13 @@ def print_report_string(row: tuple[str, str], general_data: tuple[int, int]) -> 
     print(f" {f"{row[0]}":<{max_len_lf}} | {f"{row[1]}":<{max_len_rt}}")
 
 
-def print_line_splitter(general_data: tuple[int, int]) -> None:
+def print_line_splitter(general_data: tuple[int, int], sign: str = "-") -> None:
     """
     Print line splitter
     """
     max_len_lf = general_data[0]
     max_len_rt = general_data[1]
-    print("-" * (max_len_lf + max_len_rt + 5))
+    print(sign * (max_len_lf + max_len_rt + 5))
 
 
 def calc_cosine_similarity(v1, v2) -> tuple[float, float]:
