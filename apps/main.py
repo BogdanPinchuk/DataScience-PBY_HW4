@@ -77,15 +77,6 @@ def compare_values(val1, val2) -> str:
         return "<"
 
 
-def condition_check(val1: float, val2: float) -> str:
-    """
-    Checking the condition between 2 values
-    :param val1: value 1
-    :param val2: value 2
-    :return: sign "==" or "!="
-    """
-    return "==" if val1 == val2 else "!="
-
 def calc_vec_projection_and_residue(vec1: np.ndarray, vec2: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
     """
     Calculate the projection and residue of the vector 1 onto vector 2
@@ -96,3 +87,23 @@ def calc_vec_projection_and_residue(vec1: np.ndarray, vec2: np.ndarray) -> tuple
     projection = ((vec1 @ vec2) / (vec2 @ vec2)) * vec2
     residue = vec1 - projection
     return projection, residue
+
+
+def condition_check_values(val1: float, val2: float) -> str:
+    """
+    Checking the condition of the equality between 2 values
+    :param val1: value 1
+    :param val2: value 2
+    :return: sign "==" or "!="
+    """
+    return "==" if val1 == val2 else "!="
+
+
+def condition_check_arrays(array1: np.ndarray, array2: np.ndarray) -> str:
+    """
+    Checking the condition of the equality between 2 arrays
+    :param array1: array 1
+    :param array2: array 2
+    :return: sign "==" or "!="
+    """
+    return "==" if np.allclose(array1, array2) else "!="
